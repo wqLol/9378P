@@ -5,14 +5,15 @@ using namespace vex;
 competition Competition;
 
 void driverControl() { 
-  int forward = Controller.Axis2.position(); 
+  int forwardMovement = Controller.Axis3.position(); 
   int turn = Controller.Axis1.position();    
 
-  int leftPower = forward + turn;
-  int rightPower = forward - turn;
+  double leftPower = forwardMovement + turn;
+  double rightPower = forwardMovement - turn;
 
-  leftDrive.spin(fwd, leftPower, percent);
-  rightDrive.spin(fwd, rightPower, percent);
+  leftDrive.spin(forward, rightPower/8.3, volt);
+  rightDrive.spin(forward, rightPower/8.3, volt);
+
 }
 
 int main() {
